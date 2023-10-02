@@ -654,3 +654,61 @@ connection to server at "localhost" (127.0.0.1), port 5332 failed: Connection re
 05:12:20 PM: DEBUG [cursor_del_pool.py:17] Se ejecuta metodo __exit__
 05:12:20 PM: DEBUG [cursor_del_pool.py:23] Commit de la transaccion
 05:12:20 PM: DEBUG [conexion.py:47] Regresamos la conexion al pool: <connection object at 0x0000015410770BF0; dsn: 'user=postgres password=xxx dbname=test_db host=localhost port=5432', closed: 0>
+07:52:41 PM: DEBUG [cursor_del_pool.py:11] Inicio del método  with __enter__
+07:52:41 PM: DEBUG [conexion.py:29] Creacion del pool exitosa: <psycopg2.pool.SimpleConnectionPool object at 0x000002B74F795760>
+07:52:41 PM: DEBUG [conexion.py:41] Conexion obtenida del pool: <connection object at 0x000002B74DBE4BF0; dsn: 'user=postgres password=xxx dbname=test_db host=localhost port=5432', closed: 0>
+07:52:41 PM: DEBUG [cursor_del_pool.py:17] Se ejecuta método __exit__
+07:52:41 PM: DEBUG [cursor_del_pool.py:23] Commit de la transaccion
+07:52:41 PM: DEBUG [conexion.py:47] Regresamos la conexion al pool: <connection object at 0x000002B74DBE4BF0; dsn: 'user=postgres password=xxx dbname=test_db host=localhost port=5432', closed: 0>
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 2, Nombre: Pepe rico,
+            Apellido: Cuca, Email: cuca@cuca.com    
+        
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 11, Nombre: Maria,
+            Apellido: Esparza, Email: correo@correo.com    
+        
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 12, Nombre: Maria,
+            Apellido: Esparza, Email: correo@correo.com    
+        
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 15, Nombre: Maria,
+            Apellido: Esparza, Email: correo@correo.com    
+        
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 16, Nombre: Maria,
+            Apellido: Esparza, Email: correo@correo.com    
+        
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 17, Nombre: Maria,
+            Apellido: Esparza, Email: correo@correo.com    
+        
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 18, Nombre: Juana,
+            Apellido: Esparza, Email: correo@correo.com    
+        
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 19, Nombre: Pedro,
+            Apellido: Caca, Email: pepe@pepe.com    
+        
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 21, Nombre: Pedro,
+            Apellido: Caca, Email: pepe@pepe.com    
+        
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 22, Nombre: Pedro,
+            Apellido: Caca, Email: pepe@pepe.com    
+        
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 23, Nombre: Pedro,
+            Apellido: Caca, Email: pepe@pepe.com    
+        
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 24, Nombre: Pedro,
+            Apellido: Caca, Email: pepe@pepe.com    
+        
+07:52:41 PM: DEBUG [persona_dao.py:76] 
+            ID persona: 25, Nombre: Pedro,
+            Apellido: Caca, Email: pepe@pepe.com    
+        

@@ -3,6 +3,7 @@ import logging
 from conexion import Conexion
 from persona import Persona
 from logger_base import log
+from cursor_del_pool import CursorDelPool
 
 
 class PersonaDAO:
@@ -19,43 +20,39 @@ class PersonaDAO:
 
     @classmethod
     def seleccionar(cls):
-        with Conexion.obtener_conexion() as conexion:
-            with conexion.cursor() as cursor:
-                cursor.execute(cls._SELECCIONAR)
-                registros = cursor.fetchall()
-                _personas = []
-                for registro in registros:
-                    _persona = Persona(registro[0], registro[1], registro[2], registro[3])
-                    _personas.append(_persona)
+        with CursorDelPool() as cursor:
+            cursor.execute(cls._SELECCIONAR)
+            registros = cursor.fetchall()
+            _personas = []
+            for registro in registros:
+                _persona = Persona(registro[0], registro[1], registro[2], registro[3])
+                _personas.append(_persona)
 
-                return _personas
+            return _personas
 
     @classmethod
     def insertar(cls, persona_obj):
-        with Conexion.obtener_conexion():
-            with Conexion.obtener_cursor() as cursor:
-                valores = (persona_obj.nombre, persona_obj.apellido, persona_obj.email)
-                cursor.execute(cls._INSERTAR, valores)
-                log.debug(f'Persona insertada: {persona_obj}')
-                return cursor.rowcount
+        with CursorDelPool() as cursor:
+            valores = (persona_obj.nombre, persona_obj.apellido, persona_obj.email)
+            cursor.execute(cls._INSERTAR, valores)
+            log.debug(f'Persona insertada: {persona_obj}')
+            return cursor.rowcount
 
     @classmethod
     def actulizar(cls, persona_obj):
-        with Conexion.obtener_conexion():
-            with Conexion.obtener_cursor() as cursor:
-                valores = (persona_obj.nombre, persona_obj.apellido, persona_obj.email, persona_obj.id_persona)
-                cursor.execute(cls._ACTUALIZAR, valores)
-                log.debug(f'Persona actualizada: {persona_obj}')
-                return cursor.rowcount
+        with CursorDelPool() as cursor:
+            valores = (persona_obj.nombre, persona_obj.apellido, persona_obj.email, persona_obj.id_persona)
+            cursor.execute(cls._ACTUALIZAR, valores)
+            log.debug(f'Persona actualizada: {persona_obj}')
+            return cursor.rowcount
 
     @classmethod
     def eliminar(cls, persona):
-        with Conexion.obtener_conexion():
-            with Conexion.obtener_cursor() as cursor:
-                valores = (persona.id_persona,)
-                cursor.execute(cls._ELIMINAR, valores)
-                log.debug(f'Persona eliminada: {persona}')
-                return cursor.rowcount
+        with CursorDelPool() as cursor:
+            valores = (persona.id_persona,)
+            cursor.execute(cls._ELIMINAR, valores)
+            log.debug(f'Persona eliminada: {persona}')
+            return cursor.rowcount
 
 
 if __name__ == '__main__':
@@ -69,9 +66,9 @@ if __name__ == '__main__':
     # log.debug(f'Personas insertadas: {personas_insertada}')
 
     # Eliminar registro
-    persona1 = Persona(id_persona=20)
-    personas_eliminadas = PersonaDAO.eliminar(persona1)
-    log.debug(f'Personas eliminadas: {personas_eliminadas}')
+    # persona1 = Persona(id_persona=20)
+    # personas_eliminadas = PersonaDAO.eliminar(persona1)
+    # log.debug(f'Personas eliminadas: {personas_eliminadas}')
     # selecionar objectos
     personas = PersonaDAO.seleccionar()
 

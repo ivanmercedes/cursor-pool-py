@@ -8,13 +8,13 @@ class CursorDelPool:
         self._cursor = None
 
     def __enter__(self):
-        log.debug('Inicio del metodo  with __enter__')
+        log.debug('Inicio del método  with __enter__')
         self._conexion = Conexion.obtener_conexion()
         self._cursor = self._conexion.cursor()
         return self._cursor
 
     def __exit__(self, tipo_excepcion, valor_excepcion, detalle_excepcion):
-        log.debug('Se ejecuta metodo __exit__')
+        log.debug('Se ejecuta método __exit__')
         if valor_excepcion:
             self._conexion.rollback()
             log.error(f'Ocurrio una excepcion se hace rollback: {valor_excepcion} {tipo_excepcion} {detalle_excepcion}')
